@@ -1,0 +1,111 @@
+<div class="bg-white rounded-lg shadow-lg p-4">
+  <div class="mb-2">
+    <div class="text-sm font-semibold mb-1 text-center uppercase text-gray-500">Toshiba</div>
+    <div class="bg-gray-300 rounded p-2 text-center text-xl font-bold flex items-center justify-between h-20">
+      <span class="flex-1 text-left text-gray-500"><%= mode(@state) %></span>
+      <span class="flex-1"><%= temperature(@state) %></span>
+      <span class="flex-1 text-right">
+        <%= unless @state.mode == :off do %>
+          <span class="bg-gray-500 text-gray-100 p-1 rounded">風量</span>
+          <span class="text-gray-500">
+            <%= if @state.fan_speed == :super do %>
+              <.icon name="hero-arrow-trending-up" />
+            <% else %>
+              <%= fan_speed(@state) %>
+            <% end %>
+          </span>
+        <% end %>
+      </span>
+    </div>
+  </div>
+  <div class="grid grid-cols-3 gap-2">
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+      phx-click="set_mode"
+      phx-value-mode="cool"
+    >
+      冷房
+    </button>
+    <button
+      class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded"
+      phx-click="set_mode"
+      phx-value-mode="dry"
+    >
+      除湿
+    </button>
+    <button
+      class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+      phx-click="set_mode"
+      phx-value-mode="heat"
+    >
+      暖房
+    </button>
+  </div>
+  <div class="mt-2 grid grid-cols-5 gap-2 ">
+    <button
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded"
+      phx-click="set_mode"
+      phx-value-mode="fan_only"
+    >
+      送風
+    </button>
+    <button
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded"
+      phx-click="temperature_down"
+    >
+      <.icon name="hero-chevron-down" />
+    </button>
+    <button
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded"
+      phx-click="set_mode"
+      phx-value-mode="off"
+    >
+      停止
+    </button>
+    <button
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded"
+      phx-click="temperature_up"
+    >
+      <.icon name="hero-chevron-up" />
+    </button>
+    <button
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded"
+      phx-click="set_mode"
+      phx-value-mode="auto"
+    >
+      自動
+    </button>
+  </div>
+  <div class="mt-2 grid grid-cols-3 gap-2">
+    <button
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded"
+      phx-click="swing"
+    >
+      スイング
+    </button>
+    <button
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded"
+      phx-click="vertical_direction"
+    >
+      風向
+    </button>
+    <button
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded"
+      phx-click="cycle_fan_speed"
+    >
+      風量
+    </button>
+  </div>
+  <div class="mt-2 grid grid-cols-3 gap-2">
+    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded">
+      入タイマー
+    </button>
+    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded">
+      切タイマー
+    </button>
+    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded">
+      とりけし
+    </button>
+  </div>
+  <div class="mt-2 text-center text-xs text-gray-500">エアコン</div>
+</div>

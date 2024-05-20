@@ -17,7 +17,7 @@ defmodule MinettiUiWeb.Router do
   scope "/", MinettiUiWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", RemoteControllerLive
   end
 
   # Other scopes may use custom stacks.

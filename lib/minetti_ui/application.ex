@@ -13,6 +13,7 @@ defmodule MinettiUi.Application do
       {Phoenix.PubSub, name: MinettiUi.PubSub},
       # Start a worker by calling: MinettiUi.Worker.start_link(arg)
       # {MinettiUi.Worker, arg},
+      {MinettiUi.FakeState, []},
       # Start to serve requests, typically the last entry
       MinettiUiWeb.Endpoint
     ]
